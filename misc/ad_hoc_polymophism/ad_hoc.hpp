@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ad_hoc.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerzone <amerzone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:15:00 by amerzone          #+#    #+#             */
-/*   Updated: 2025/12/15 15:43:56 by amerzone         ###   ########.fr       */
+/*   Updated: 2025/12/16 11:10:09 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AD_HOC_H
 # define AD_HOC_H
+
+/*Le polymophisme nous permet d'utiliser plusieurs focntions avec le même nom
+mais qui est definie par les paramètres qu'elles prennent*/
 
 class Adhoc 
 {

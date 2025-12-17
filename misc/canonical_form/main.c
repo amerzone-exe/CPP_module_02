@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 15:52:22 by amerzone          #+#    #+#             */
-/*   Updated: 2025/12/16 11:09:06 by jpiquet          ###   ########.fr       */
+/*   Created: 2025/12/16 11:26:17 by jpiquet           #+#    #+#             */
+/*   Updated: 2025/12/16 15:40:02 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ad_hoc.hpp"
+#include "Canonical.hpp"
 
-int main ( void )
+int main( void )
 {
-	Adhoc test;
-
-	test.bar('a');
-	test.bar(42);
-	test.bar(3.5f);
-	test.bar(test);
-
-	return 0;
+	
 }

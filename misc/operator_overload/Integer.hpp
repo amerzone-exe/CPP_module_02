@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Integer.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerzone <amerzone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:31:33 by amerzone          #+#    #+#             */
-/*   Updated: 2025/12/15 16:35:33 by amerzone         ###   ########.fr       */
+/*   Updated: 2025/12/16 10:55:40 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ class Integer
 
 };
 
-
+std::ostream &	operator<<( std::ostream & o, Integer const & rhs );
 
 #endif
