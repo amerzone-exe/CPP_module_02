@@ -6,12 +6,12 @@
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 11:27:53 by jpiquet           #+#    #+#             */
-/*   Updated: 2025/12/17 10:55:50 by jpiquet          ###   ########.fr       */
+/*   Updated: 2025/12/18 11:12:47 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANONICAL_HPP
-#define CANONICAL_HPP
+# define CANONICAL_HPP
 
 #include <iostream>
 
