@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   test_float.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amerzone <amerzone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 13:17:59 by jpiquet           #+#    #+#             */
-/*   Updated: 2025/12/21 12:10:35 by amerzone         ###   ########.fr       */
+/*   Created: 2025/12/21 11:38:25 by amerzone          #+#    #+#             */
+/*   Updated: 2025/12/21 11:59:03 by amerzone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef FIXED_HPP
-# define FIXED_HPP
 
 #include <iostream>
 #include <cmath>
 
-class Fixed
+int main()
 {
-	private:
-		int 				_a;
-		static const int	_b;
+	float	a = 42.42f;
+	int		b;
+	std::cout << "Before fixed = " << a << std::endl;
+	
+	a *= (1 << 8);
+	b = (int)roundf(a);
+	std::cout << "After fixed = " << b << std::endl;
+	
+	a = (float)b / (1 << 8);
+	std::cout << "Re-float = " << a << std::endl;
 
-	public:
-		Fixed( void );
-		Fixed( Fixed const & src);
-
-		Fixed( int const n );
-		Fixed( float const n );
-
-		Fixed & operator=(Fixed const & rhs);
-
-		int		getRawBits( void ) const;
-
-		int		toInt( void ) const;
-		float	toFloat( void ) const;
-
-		~Fixed( void );	
-};
-
-std::ostream &	operator<<(std::ostream & os, const Fixed & src);
-
-#endif
+	return 0;
+}

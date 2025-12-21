@@ -6,7 +6,7 @@
 /*   By: amerzone <amerzone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:22:11 by jpiquet           #+#    #+#             */
-/*   Updated: 2025/12/21 12:18:17 by amerzone         ###   ########.fr       */
+/*   Updated: 2025/12/21 13:02:26 by amerzone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ Fixed & Fixed::operator=( Fixed const & rhs)
 
 int	Fixed::getRawBits( void ) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return this->_a;
 }
 
@@ -69,6 +68,76 @@ int		Fixed::toInt( void ) const
 	int	converted;
 	converted = this->_a >> _b;
 	return converted;
+}
+
+/*Comparison operator*/
+bool	Fixed::operator<(const Fixed & rhs)
+{
+	if (this->_a < rhs.getRawBits())
+		return true;
+	else
+		return false;
+}
+
+bool	Fixed::operator>(const Fixed & rhs)
+{
+	if (this->_a > rhs.getRawBits())
+		return true;
+	else
+		return false;	
+}
+
+bool	Fixed::operator<=(const Fixed & rhs)
+{
+	if (this->_a <= rhs.getRawBits())
+		return true;
+	else
+		return false;		
+}
+
+bool	Fixed::operator>=(const Fixed & rhs)
+{
+	if (this->_a >= rhs.getRawBits())
+		return true;
+	else
+		return false;		
+}
+
+bool	Fixed::operator==(const Fixed & rhs)
+{
+	if (this->_a == rhs.getRawBits())
+		return true;
+	else
+		return false;		
+}
+
+bool	Fixed::operator!=(const Fixed & rhs)
+{
+	if (this->_a != rhs.getRawBits())
+		return true;
+	else
+		return false;		
+}
+
+/*Arithmetic operator*/
+int &	Fixed::operator+(const Fixed & rhs)
+{
+	return this->_a + rhs.getRawBits();
+}
+
+int &	Fixed::operator-(const Fixed & rhs)
+{
+	return this->_a - rhs.getRawBits();
+}
+
+int &	Fixed::operator*(const Fixed & rhs)
+{
+	return this->_a * rhs.getRawBits();
+}
+
+int &	Fixed::operator/(const Fixed & rhs)
+{
+	return this->_a / rhs.getRawBits();
 }
 
 std::ostream &	operator<<(std::ostream & os, Fixed const & src)
