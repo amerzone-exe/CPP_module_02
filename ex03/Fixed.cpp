@@ -6,7 +6,7 @@
 /*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:22:11 by jpiquet           #+#    #+#             */
-/*   Updated: 2025/12/27 17:33:05 by jocelyn          ###   ########.fr       */
+/*   Updated: 2025/12/27 18:16:58 by jocelyn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Fixed::Fixed( float const n )
 }
 
 /*Assignation operator overload*/
-Fixed & Fixed::operator=( Fixed const & rhs)
+const Fixed & Fixed::operator=( Fixed const & rhs)
 {
 	this->_a = rhs.getRawBits();
 	return *this;

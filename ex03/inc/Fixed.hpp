@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed2.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerzone <amerzone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:17:59 by jpiquet           #+#    #+#             */
-/*   Updated: 2025/12/21 13:02:30 by amerzone         ###   ########.fr       */
+/*   Updated: 2025/12/27 18:16:47 by jocelyn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Fixed
 		Fixed( int const n );
 		Fixed( float const n );
 
-		Fixed & operator=(Fixed const & rhs);
+		const Fixed & operator=(Fixed const & rhs);
 
 		int		getRawBits( void ) const;
 
@@ -37,25 +37,31 @@ class Fixed
 		float	toFloat( void ) const;
 
 		/*Comparison operator*/
-		bool	operator<(const Fixed & rhs);
-		bool	operator>(const Fixed & rhs);
-		bool	operator<=(const Fixed & rhs);
-		bool	operator>=(const Fixed & rhs);
-		bool	operator==(const Fixed & rhs);
-		bool	operator!=(const Fixed & rhs);
+		bool	operator<(const Fixed & rhs) const ;
+		bool	operator>(const Fixed & rhs) const ;
+		bool	operator<=(const Fixed & rhs) const ;
+		bool	operator>=(const Fixed & rhs) const ;
+		bool	operator==(const Fixed & rhs) const ;
+		bool	operator!=(const Fixed & rhs) const ;
 
 		/*Arithmetic operator*/
-		int &	operator+(const Fixed & rhs);
-		int &	operator-(const Fixed & rhs);
-		int &	operator*(const Fixed & rhs);
-		int &	operator/(const Fixed & rhs);
+		Fixed &	operator+(const Fixed & rhs);
+		Fixed &	operator-(const Fixed & rhs);
+		Fixed &	operator*(const Fixed & rhs);
+		Fixed &	operator/(const Fixed & rhs);
 
 		/*Increment/decrement operator*/
-		int &	operator++(const Fixed & rhs);
-		int &	operator--(const Fixed & rhs);
-		int &	operator++(const Fixed & rhs);
-		int &	operator--(const Fixed & rhs);
+		/*Pre*/
+		Fixed &	operator++( void );
+		Fixed &	operator--( void );
+		/*Post*/
+		Fixed	operator++( int );
+		Fixed	operator--( int );
 
+		static Fixed & min( Fixed & a, Fixed & b);
+		static Fixed & max( Fixed & a, Fixed & b);
+		static const Fixed & min( const Fixed & a, const Fixed & b);
+		static const Fixed & max( const Fixed & a, const Fixed & b);
 
 		~Fixed( void );	
 };
