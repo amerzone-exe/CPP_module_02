@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:22:11 by jpiquet           #+#    #+#             */
-/*   Updated: 2025/12/27 17:33:05 by jocelyn          ###   ########.fr       */
+/*   Updated: 2026/01/08 10:21:38 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		Fixed::toInt( void ) const
 	return converted;
 }
 
-/*Comparison operator*/
+/*Comparison operator overload*/
 bool	Fixed::operator<(const Fixed & rhs) const
 {
 	if (this->_a < rhs.getRawBits())
@@ -115,7 +115,7 @@ bool	Fixed::operator!=(const Fixed & rhs) const
 		return false;		
 }
 
-/*Arithmetic operator*/
+/*Arithmetic operator overload*/
 Fixed &	Fixed::operator+(const Fixed & rhs)
 {
 	this->_a += rhs.getRawBits();
@@ -140,18 +140,19 @@ Fixed &	Fixed::operator/(const Fixed & rhs)
 	return *this;
 }
 
-/*Increment / Decrement operator*/
+/*Increment / Decrement operator overload*/
+
 /*Pre-increment*/
 Fixed &	Fixed::operator++( void )
 {
-	this->_a += (1 < _b);
+	this->_a += 1;
 	return *this;
 }
 
 /*Pre-decrement*/
 Fixed &	Fixed::operator--( void )
 {
-	this->_a -= (1 < _b);
+	this->_a -= 1;
 	return *this;
 }
 
@@ -159,7 +160,7 @@ Fixed &	Fixed::operator--( void )
 Fixed	Fixed::operator++( int )
 {
 	Fixed temp = *this;
-	this->_a += (1 < _b);
+	this->_a += 1;
 	return temp;
 }
 
@@ -167,10 +168,11 @@ Fixed	Fixed::operator++( int )
 Fixed	Fixed::operator--( int )
 {
 	Fixed temp = *this;
-	this->_a -= (1 < _b);
+	this->_a -= 1;
 	return temp;
 }
 
+/*Take two fixed points and return the smaller one*/
 Fixed & Fixed::min( Fixed & a, Fixed & b)
 {
 	if (a < b)
@@ -179,6 +181,7 @@ Fixed & Fixed::min( Fixed & a, Fixed & b)
 		return b;
 }
 
+/*Take two const fixed points and return the smaller one*/
 const Fixed & Fixed::min( const Fixed & a, const Fixed & b)
 {
 	if (a < b)
@@ -187,6 +190,7 @@ const Fixed & Fixed::min( const Fixed & a, const Fixed & b)
 		return b;
 }
 
+/*Take two fixed points and return the larger one*/
 Fixed & Fixed::max( Fixed & a, Fixed & b)
 {
 	if (a > b)
@@ -195,6 +199,7 @@ Fixed & Fixed::max( Fixed & a, Fixed & b)
 		return b;
 }
 
+/*Take two const fixed points and return the larger one*/
 const Fixed & Fixed::max( const Fixed & a, const Fixed & b)
 {
 	if (a > b)
@@ -203,6 +208,7 @@ const Fixed & Fixed::max( const Fixed & a, const Fixed & b)
 		return b;
 }
 
+/*Output stream operator overload*/
 std::ostream &	operator<<(std::ostream & os, Fixed const & src)
 {
 	os << src.toFloat();

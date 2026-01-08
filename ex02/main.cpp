@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocelyn <jocelyn@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:57:27 by jpiquet           #+#    #+#             */
-/*   Updated: 2025/12/27 17:37:03 by jocelyn          ###   ########.fr       */
+/*   Updated: 2026/01/05 13:47:20 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
+	std::cout << --a << std::endl;
 
 	c = c / d;
 	std::cout << "c / d = " << c << std::endl;
@@ -34,12 +35,11 @@ int main( void )
 
 	std::cout << Fixed::max( a, b ) << std::endl;
 	std::cout << Fixed::min( a, c ) << std::endl;
-	
+
 	if (a < b)
 		std::cout << "a is smaller than b" << std::endl;
 	if (b > a)
 		std::cout << "b is greater than a" << std::endl;
 
-return 0;
+	return 0;
 }
-

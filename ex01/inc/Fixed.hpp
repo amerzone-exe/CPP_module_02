@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amerzone <amerzone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:17:59 by jpiquet           #+#    #+#             */
-/*   Updated: 2025/12/21 12:10:35 by amerzone         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:10:13 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Fixed
 		int		toInt( void ) const;
 		float	toFloat( void ) const;
 
-		~Fixed( void );	
+		~Fixed( void );
 };
 
 std::ostream &	operator<<(std::ostream & os, const Fixed & src);
