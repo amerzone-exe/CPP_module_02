@@ -6,14 +6,14 @@
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:22:11 by jpiquet           #+#    #+#             */
-/*   Updated: 2026/01/08 10:21:38 by jpiquet          ###   ########.fr       */
+/*   Updated: 2026/01/13 14:49:51 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 /*Default constructor*/
-Fixed::Fixed( void ) : _a(0)
+Fixed::Fixed( void ) : _fixedPoint(0)
 {
 }
 
@@ -31,112 +31,129 @@ Fixed::Fixed( Fixed const & src)
 /*convert an int to a the fixed point number*/
 Fixed::Fixed( int const n )
 {
-	this->_a = n << _b;
+	this->_fixedPoint = n << _decimalBits;
 }
 
 /*convert an float to a the fixed point number*/
 Fixed::Fixed( float const n )
 {
-	this->_a = roundf(n * (1 << _b));
+	this->_fixedPoint = roundf(n * (1 << _decimalBits));
 }
 
 /*Assignation operator overload*/
-Fixed & Fixed::operator=( Fixed const & rhs)
+Fixed & Fixed::operator=( Fixed const & rightSide)
 {
-	this->_a = rhs.getRawBits();
+	this->_fixedPoint = rightSide._fixedPoint;
 	return *this;
 }
 
 int	Fixed::getRawBits( void ) const
 {
-	return this->_a;
+	return this->_fixedPoint;
+}
+
+void	Fixed::setRawBits( int	const raw)
+{
+	this->_fixedPoint = raw;
 }
 
 float	Fixed::toFloat( void ) const
 {
 	float	converted;
-	converted = (float)this->_a / (1 << _b);
+	converted = static_cast<float>(this->_fixedPoint) / static_cast<float>(1 << _decimalBits);
 	return converted;
 }
 
 int		Fixed::toInt( void ) const
 {
 	int	converted;
-	converted = this->_a >> _b;
+	converted = this->_fixedPoint >> _decimalBits;
 	return converted;
 }
 
 /*Comparison operator overload*/
-bool	Fixed::operator<(const Fixed & rhs) const
+bool	Fixed::operator<(const Fixed & rightSide) const
 {
-	if (this->_a < rhs.getRawBits())
+	if (this->_fixedPoint < rightSide._fixedPoint)
 		return true;
 	else
 		return false;
 }
 
-bool	Fixed::operator>(const Fixed & rhs) const
+bool	Fixed::operator>(const Fixed & rightSide) const
 {
-	if (this->_a > rhs.getRawBits())
+	if (this->_fixedPoint > rightSide._fixedPoint)
 		return true;
 	else
 		return false;	
 }
 
-bool	Fixed::operator<=(const Fixed & rhs) const
+bool	Fixed::operator<=(const Fixed & rightSide) const
 {
-	if (this->_a <= rhs.getRawBits())
+	if (this->_fixedPoint <= rightSide._fixedPoint)
 		return true;
 	else
 		return false;		
 }
 
-bool	Fixed::operator>=(const Fixed & rhs) const
+bool	Fixed::operator>=(const Fixed & rightSide) const
 {
-	if (this->_a >= rhs.getRawBits())
+	if (this->_fixedPoint >= rightSide._fixedPoint)
 		return true;
 	else
 		return false;		
 }
 
-bool	Fixed::operator==(const Fixed & rhs) const
+bool	Fixed::operator==(const Fixed & rightSide) const
 {
-	if (this->_a == rhs.getRawBits())
+	if (this->_fixedPoint == rightSide._fixedPoint)
 		return true;
 	else
 		return false;		
 }
 
-bool	Fixed::operator!=(const Fixed & rhs) const
+bool	Fixed::operator!=(const Fixed & rightSide) const
 {
-	if (this->_a != rhs.getRawBits())
+	if (this->_fixedPoint != rightSide._fixedPoint)
 		return true;
 	else
 		return false;		
 }
 
 /*Arithmetic operator overload*/
-Fixed &	Fixed::operator+(const Fixed & rhs)
+Fixed	Fixed::operator+(const Fixed & rightSide)
 {
-	this->_a += rhs.getRawBits();
-	return *this;
+	Fixed	temp;
+
+	long res = static_cast<long>(this->_fixedPoint) + static_cast<long>(rightSide._fixedPoint);
+	temp._fixedPoint = res;
+
+	return temp;
 }
 
-Fixed &	Fixed::operator-(const Fixed & rhs)
+Fixed	Fixed::operator-(const Fixed & rightSide)
 {
-	this->_a -= rhs.getRawBits();
-	return *this;
+	Fixed	temp;
+
+	temp._fixedPoint = this->_fixedPoint - rightSide._fixedPoint;
+	return temp;
 }
 
-Fixed &	Fixed::operator*(const Fixed & rhs)
+Fixed	Fixed::operator*(const Fixed & rightSide)
 {
-	this->_a = (this->_a * rhs.getRawBits()) / (1 << _b);
-	return *this;
+	Fixed temp;
+
+	long res = ((static_cast<long>(this->_fixedPoint) * static_cast<long>(rightSide._fixedPoint))) / (1 << _decimalBits);
+	temp._fixedPoint = res;
+
+	return temp;
 }
 
-Fixed &	Fixed::operator/(const Fixed & rhs)
+Fixed	Fixed::operator/(const Fixed & rightSide)
 {
-	this->_a = ((float)this->_a / (float)rhs.getRawBits()) * (1 << _b);
+	Fixed	temp;
+
+	temp._fixedPoint = ((static_cast<float>(this->_fixedPoint) / static_cast<float>(rightSide._fixedPoint))) * (1 << _decimalBits);
 	return *this;
 }
 
@@ -145,14 +162,14 @@ Fixed &	Fixed::operator/(const Fixed & rhs)
 /*Pre-increment*/
 Fixed &	Fixed::operator++( void )
 {
-	this->_a += 1;
+	this->_fixedPoint += 1;
 	return *this;
 }
 
 /*Pre-decrement*/
 Fixed &	Fixed::operator--( void )
 {
-	this->_a -= 1;
+	this->_fixedPoint -= 1;
 	return *this;
 }
 
@@ -160,7 +177,7 @@ Fixed &	Fixed::operator--( void )
 Fixed	Fixed::operator++( int )
 {
 	Fixed temp = *this;
-	this->_a += 1;
+	this->_fixedPoint += 1;
 	return temp;
 }
 
@@ -168,7 +185,7 @@ Fixed	Fixed::operator++( int )
 Fixed	Fixed::operator--( int )
 {
 	Fixed temp = *this;
-	this->_a -= 1;
+	this->_fixedPoint -= 1;
 	return temp;
 }
 
@@ -216,4 +233,4 @@ std::ostream &	operator<<(std::ostream & os, Fixed const & src)
 }
 
 /*Initialization for static attribut*/
-const int Fixed::_b = 8;
+const int Fixed::_decimalBits = 8;

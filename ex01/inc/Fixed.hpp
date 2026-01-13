@@ -6,7 +6,7 @@
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:17:59 by jpiquet           #+#    #+#             */
-/*   Updated: 2026/01/05 15:10:13 by jpiquet          ###   ########.fr       */
+/*   Updated: 2026/01/12 15:24:20 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class Fixed
 {
 	private:
-		int 				_a;
-		static const int	_b;
+		int 				_fixedPoint;
+		static const int	_decimalBits;
 
 	public:
 		Fixed( void );
@@ -29,9 +29,10 @@ class Fixed
 		Fixed( int const n );
 		Fixed( float const n );
 
-		Fixed & operator=(Fixed const & rhs);
+		Fixed & operator=( Fixed const & rightSide );
 
 		int		getRawBits( void ) const;
+		void	setRawBits( int	const	raw );
 
 		int		toInt( void ) const;
 		float	toFloat( void ) const;

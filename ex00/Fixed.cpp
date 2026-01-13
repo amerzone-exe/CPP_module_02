@@ -6,14 +6,14 @@
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:22:11 by jpiquet           #+#    #+#             */
-/*   Updated: 2026/01/12 10:28:52 by jpiquet          ###   ########.fr       */
+/*   Updated: 2026/01/13 14:51:44 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Fixed.hpp>
 
 /*Default constructor*/
-Fixed::Fixed( void ) : _a(0)
+Fixed::Fixed( void ) : _fixedPoint(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -32,18 +32,24 @@ Fixed::Fixed( Fixed const & src)
 }
 
 /*Assignation operator overload*/
-Fixed & Fixed::operator=( Fixed const & rhs)
+Fixed & Fixed::operator=( Fixed const & rightSide )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_a = rhs.getRawBits();
+	this->_fixedPoint = rightSide._fixedPoint;
 	return *this;
 }
 
 int	Fixed::getRawBits( void ) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return this->_a;
+	return this->_fixedPoint;
+}
+
+void	Fixed::setRawBits( int const	raw )
+{
+	std::cout << "setRawBits member function called" << std::endl;
+	this->_fixedPoint = raw;
 }
 
 /*Initialization for static attribut*/
-const int Fixed::_b = 8;
+const int Fixed::_decimalBits = 8;
