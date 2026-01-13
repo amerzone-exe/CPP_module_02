@@ -6,7 +6,7 @@
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:22:11 by jpiquet           #+#    #+#             */
-/*   Updated: 2026/01/13 14:49:51 by jpiquet          ###   ########.fr       */
+/*   Updated: 2026/01/13 15:47:56 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ bool	Fixed::operator>(const Fixed & rightSide) const
 	if (this->_fixedPoint > rightSide._fixedPoint)
 		return true;
 	else
-		return false;	
+		return false;
 }
 
 bool	Fixed::operator<=(const Fixed & rightSide) const
@@ -93,7 +93,7 @@ bool	Fixed::operator<=(const Fixed & rightSide) const
 	if (this->_fixedPoint <= rightSide._fixedPoint)
 		return true;
 	else
-		return false;		
+		return false;
 }
 
 bool	Fixed::operator>=(const Fixed & rightSide) const
@@ -101,7 +101,7 @@ bool	Fixed::operator>=(const Fixed & rightSide) const
 	if (this->_fixedPoint >= rightSide._fixedPoint)
 		return true;
 	else
-		return false;		
+		return false;
 }
 
 bool	Fixed::operator==(const Fixed & rightSide) const
@@ -109,7 +109,7 @@ bool	Fixed::operator==(const Fixed & rightSide) const
 	if (this->_fixedPoint == rightSide._fixedPoint)
 		return true;
 	else
-		return false;		
+		return false;
 }
 
 bool	Fixed::operator!=(const Fixed & rightSide) const
@@ -117,7 +117,7 @@ bool	Fixed::operator!=(const Fixed & rightSide) const
 	if (this->_fixedPoint != rightSide._fixedPoint)
 		return true;
 	else
-		return false;		
+		return false;
 }
 
 /*Arithmetic operator overload*/
@@ -154,7 +154,7 @@ Fixed	Fixed::operator/(const Fixed & rightSide)
 	Fixed	temp;
 
 	temp._fixedPoint = ((static_cast<float>(this->_fixedPoint) / static_cast<float>(rightSide._fixedPoint))) * (1 << _decimalBits);
-	return *this;
+	return temp;
 }
 
 /*Increment / Decrement operator overload*/

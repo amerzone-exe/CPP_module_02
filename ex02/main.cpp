@@ -6,7 +6,7 @@
 /*   By: jpiquet <jpiquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:57:27 by jpiquet           #+#    #+#             */
-/*   Updated: 2026/01/13 14:46:07 by jpiquet          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:16:29 by jpiquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,18 @@ int main( void )
 	std::cout << "c = " << c << std::endl;
 	std::cout << "--c = " << --c << std::endl;
 
-	a = 10000;
-	d = 100;
+	a = Fixed(10000);
+	e = Fixed(5);
+	d = Fixed(100);
+
 	c = ((a - (d * b)) / d) * b;
-	std::cout << "c = " << c << std::endl;
+	std::cout << "c = " << c << std::endl << std::endl;
+
+	c = ((a - (d * e)) / d) * e;
+	std::cout << "c = " << c << std::endl << std::endl;
+
+	c = a / d;
+	std::cout << "c = " << c << std::endl << std::endl;
 
 	std::cout << b << std::endl;
 
